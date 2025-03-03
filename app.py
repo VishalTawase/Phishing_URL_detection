@@ -11,7 +11,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained model
-model = tf.keras.models.load_model("model1_TDLHBA.h5")
+# model = tf.keras.models.load_model("model1_TDLHBA.h5")
 
 TFLITE_MODEL_PATH = "model1_TDLHBA.tflite"
 
