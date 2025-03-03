@@ -1,0 +1,6 @@
+flask
+tensorflow
+pandas
+requests
+dnspython
+gunicorn
