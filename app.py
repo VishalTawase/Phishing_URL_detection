@@ -12,6 +12,9 @@ app = Flask(__name__)
 # Load the trained model
 model = tf.keras.models.load_model("model1_TDLHBA.h5")
 
+
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+model = converter.convert()
 # Feature extraction functions
 def havingIP(url):
     try:
