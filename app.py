@@ -146,15 +146,28 @@ def iframe(url):
         return 1
     return 0 if re.findall(r"<iframe>|<frameBorder>", response_text) else 1
 
+# def mouseOver(url):
+#     try:
+#         response = requests.get(url, timeout=5)
+#         response_text = response.text
+#     except requests.RequestException:
+#         return 1
+#     return 1 if re.findall("<script>.+onmouseover.+</script>", response_text) else 0
+
 def mouseOver(url):
     try:
-        response = requests.get(url, timeout=5)
-        response_text = response.text
-        print("MouseOver Response Length:", len(response_text))  # Debug log
-    except requests.RequestException as e:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(url)
+            
+            page_source = page.content()
+            browser.close()
+
+            return 1 if re.findall("<script>.+onmouseover.+</script>", page_source) else 0
+    except Exception as e:
         print("MouseOver Error:", e)
         return 1
-    return 1 if re.findall("<script>.+onmouseover.+</script>", response_text) else 0
 
 def rightClick(url):
     try:
@@ -164,15 +177,28 @@ def rightClick(url):
         return 1
     return 0 if re.findall(r"event.button ?== ?2", response_text) else 1
 
+# def forwarding(url):
+#     try:
+#         response = requests.get(url, timeout=5)
+#     except requests.RequestException:
+#         return 1
+#     return 0 if len(response.history) <= 2 else 1
+
 def forwarding(url):
     try:
-        response = requests.get(url, timeout=5)
-        print("Forwarding Response History Length:", len(response.history))  # Debug log
-    except requests.RequestException as e:
+        options = Options()
+        options.add_argument("--headless")
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+
+        # Check if the current URL is different from the original URL
+        final_url = driver.current_url
+        driver.quit()
+
+        return 1 if final_url != url else 0
+    except Exception as e:
         print("Forwarding Error:", e)
         return 1
-    return 0 if len(response.history) <= 2 else 1
-
 
 # Extract Features from URL
 def featureExtraction(url):
