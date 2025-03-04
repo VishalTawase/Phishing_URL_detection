@@ -5,3 +5,5 @@ requests
 dnspython
 gunicorn
 numpy
+urllib3
+beautifulsoup4
