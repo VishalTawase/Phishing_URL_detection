@@ -150,7 +150,9 @@ def mouseOver(url):
     try:
         response = requests.get(url, timeout=5)
         response_text = response.text
-    except requests.RequestException:
+        print("MouseOver Response Length:", len(response_text))  # Debug log
+    except requests.RequestException as e:
+        print("MouseOver Error:", e)
         return 1
     return 1 if re.findall("<script>.+onmouseover.+</script>", response_text) else 0
 
@@ -165,9 +167,12 @@ def rightClick(url):
 def forwarding(url):
     try:
         response = requests.get(url, timeout=5)
-    except requests.RequestException:
+        print("Forwarding Response History Length:", len(response.history))  # Debug log
+    except requests.RequestException as e:
+        print("Forwarding Error:", e)
         return 1
     return 0 if len(response.history) <= 2 else 1
+
 
 # Extract Features from URL
 def featureExtraction(url):
