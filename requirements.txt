@@ -1,6 +1,7 @@
 flask
-tensorflow
+tensorflow == 2.13.0
 pandas
 requests
 dnspython
 gunicorn
+numpy
