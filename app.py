@@ -6,23 +6,11 @@ from urllib.parse import urlparse
 import re
 import ipaddress
 import dns.resolver
-import numpy as np
 
 app = Flask(__name__)
 
 # Load the trained model
-# model = tf.keras.models.load_model("model1_TDLHBA.h5")
-
-TFLITE_MODEL_PATH = "model1_TDLHBA.tflite"
-
-# Load TFLite model into an interpreter
-interpreter = tf.lite.Interpreter(model_path=TFLITE_MODEL_PATH)
-interpreter.allocate_tensors()
-
-# Get input and output tensor indices
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
-
+model = tf.keras.models.load_model("model1_TDLHBA.h5")
 
 # Feature extraction functions
 def havingIP(url):
@@ -223,26 +211,6 @@ def generate_explanation(features):
     return reasons
 
 
-
-def predict_with_tflite(features_df):
-    # Convert DataFrame to NumPy array and reshape
-    input_data = np.array(features_df, dtype=np.float32).reshape(1, -1)
-
-    # Set the input tensor
-    interpreter.set_tensor(input_details[0]['index'], input_data)
-
-    # Run the model
-    interpreter.invoke()
-
-    # Get the prediction result
-    output_data = interpreter.get_tensor(output_details[0]['index'])
-
-    # Convert output to a readable format
-    prediction = "Phishing" if output_data[0][0] >= 0.5 else "Legitimate"
-    return prediction
-
-
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -254,12 +222,13 @@ def index():
         features_df = features_df.astype("float32")
 
         # Make prediction
-        prediction = predict_with_tflite(features_df)
-        # result = "Phishing" if prediction[0] >= 0.5 else "Legitimate"
+        prediction = model.predict(features_df)
+        result = "Phishing" if prediction[0] >= 0.5 else "Legitimate"
+
 
         explanation = generate_explanation(extracted_features)
 
-        return render_template("index.html", url=url, prediction=prediction, extracted_features=extracted_features, explanation=explanation)
+        return render_template("index.html", url=url, prediction=result, extracted_features=extracted_features, explanation=explanation)
 
     return render_template("index.html", url="", prediction="", extracted_features={}, explanation=[])
 
