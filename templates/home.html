@@ -1,0 +1,698 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cff0f5;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Menu Icon */
+        .menu {
+            position: absolute;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            right: 20px;
+            top: 0%;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: #333;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            min-width: max-content; /* Expands width to fit content */
+            max-width: 300px; /* Prevents it from becoming too wide */
+            text-align: left;
+            word-wrap: break-word;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Show Dropdown on Hover */
+        .menu:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a,
+        .dropdown p {
+            font-size: 12px;
+            /* Change this for better readability */
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: left;
+        }
+
+        /* Adjust icon size */
+        .dropdown i {
+            font-size: 10px;
+        }
+
+        .dropdown a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <header>
+        Phishing Detection System
+        <div class="menu">
+            ☰
+            <div class="dropdown">
+                <p>📞9370134060</p>
+                <p>📧tawasevishal2003@email.com</p>
+                <p>🔗 <a href="https://www.linkedin.com/in/vishal-tawase-034418226/" target="_blank">LinkedIn</a></p>
+                <p>🔗 <a href="https://github.com/VishalTawase/Sign-Language-Detection" target="_blank">GitHub Link</a></p>
+            </div>
+        </div>
+    </header>
+
+    
+    <div class="container">
+        <h2>Welcome to the Phishing Detection System</h2>
+        <p>
+            This project is designed to detect phishing URLs using machine learning. It analyzes various URL-based features
+            and predicts whether a given link is legitimate or a phishing attempt.
+        </p>
+        <p>
+            The system is powered by a trained deep learning model and employs various heuristics to determine the authenticity
+            of a website.
+        </p>
+        <p>
+            Click the button below to check if a website is safe!
+        </p>
+        
+        <a href="{{ url_for('index') }}" class="btn">Check Site</a>
+    </div>
+
+    /*footer*/
+    <div class="footer">
+        © 2025 Phishing URL Predictor | Built using Flask & TensorFlow
+    </div>
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cff0f5;
+            background: linear-gradient(135deg, #cff0f5, #d7eaff);
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Menu Icon */
+        .menu {
+            position: absolute;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            right: 20px;
+            top: 0%;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: #333;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            min-width: max-content;
+            max-width: 300px;
+            text-align: left;
+            word-wrap: break-word;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Show Dropdown on Hover */
+        .menu:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a,
+        .dropdown p {
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: left;
+            margin: 5px 0;
+        }
+
+        .dropdown a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1350px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            text-align: left;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 25px;
+            /* Bigger and more prominent */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            background: linear-gradient(360deg, #e6f7f5, #f58026);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+
+        .step {
+            background: linear-gradient(180deg, #c2d9d7, #f0f9ff);
+            /* Soft gradient */
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated border effect */
+        .step::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(360deg, #7ce9dc, #00d5ec);
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* Hover effect - expanding left border and shadow */
+        .step:hover {
+            transform: scale(1.0075);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .step:hover::before {
+            width: 8px;
+        }
+
+        /* Title Styling */
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #004085;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Icon animation effect */
+        .step-title::before {
+            content: "🚀";
+            /* Customizable icon */
+            font-size: 20px;
+            margin-right: 8px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            list-style: none;
+            font-size: 16px;
+            padding: 5px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        ul li::before {
+            content: "✔️";
+            margin-right: 10px;
+            font-size: 18px;
+            color: #2ecc71;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #0056b3;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #ff3b3b;
+        }
+
+        /* Keyframes for bounce animation */
+        @keyframes bounce {
+            from {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .step {
+                padding: 15px;
+            }
+
+            .step-title {
+                font-size: 18px;
+            }
+        }
+
+
+        /* Button Styling */
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .step {
+                padding: 15px;
+                padding-top: 5px;
+            }
+
+            .btn {
+                font-size: 16px;
+
+            }
+        }
+
+        .model-performance {
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin: 15px auto; /* Centers the table */
+            display: table; /* Ensures proper centering */
+        }
+
+        .model-performance th,
+        .model-performance td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .model-performance th {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            font-weight: bold;
+        }
+
+        .model-performance tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .model-performance tr:hover {
+            background: #d9edf7;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        Phishing Detection System
+        <div class="menu">
+            ☰
+            <div class="dropdown">
+                <p>📞 9370134060</p>
+                <p>📧 tawasevishal2003@email.com</p>
+                <p>🔗 <a href="https://www.linkedin.com/in/vishal-tawase-034418226/" target="_blank">LinkedIn</a></p>
+                <p>🔗 <a href="https://github.com/VishalTawase/Sign-Language-Detection" target="_blank">GitHub Link</a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>
+            <!-- 🔍 -->
+            How We Built the Phishing Detection System
+        </h2>
+
+        <div class="step">
+            <p class="step-title">📌 Step 1: Understanding Phishing Attacks</p>
+            <p>
+                Phishing is a cyber-attack where attackers trick users into revealing sensitive information by
+                disguising malicious websites as legitimate ones.
+                To understand this attack, we created a prototype using <b>Ngrok</b> to host a phishing page.
+            </p>
+
+            <h3>🛠️ How the Phishing Attack Works:</h3>
+            <ul>
+                <ul>
+                    <ul>
+                        <li>1️⃣ The victim receives a&nbsp;<b>phishing link</b>&nbsp; that looks like a genuine website.
+                        </li>
+                        <li>2️⃣ When they click the link, they are redirected to a&nbsp;<b>fake login page</b>&nbsp;
+                            designed to mimic the real website.</li>
+                        <li>3️⃣ The victim enters their login credentials, thinking it’s a secure site.</li>
+                        <li>4️⃣ The submitted credentials are&nbsp;<b>captured by the attacker</b>&nbsp; and stored in a
+                            file.</li>
+                        <li>5️⃣ The victim is then redirected to the&nbsp;<b>real website</b>, making the attack less
+                            suspicious.</li>
+                    </ul>
+
+                </ul>
+
+            </ul>
+
+            <h3>🎥 Watch the Phishing Attack Demonstration:</h3>
+            <p>
+                We recorded a video showcasing how a phishing attack works using &nbsp;<b>Ngrok </b> and a custom HTML
+                page.
+                <br>
+                <center>
+                    <a href="https://drive.google.com/file/d/1WNk2_kKd2Q4qIeze3xc4rKcvJ-QfMUpx/view?usp=sharing"
+                        target="_blank" class="btn">📺 Watch Video</a>
+                </center>
+            </p>
+            <p>
+                This demo is for educational purposes only! <b>Phishing is illegal</b>, and this knowledge should only
+                be used for cybersecurity awareness and protection.
+            </p>
+        </div>
+
+
+        <div class="step">
+            <p class="step-title">Step 2: Collecting Data</p>
+            <p>
+                We gathered a dataset of <b>120,000 URLs</b>, consisting of:
+            </p>
+            <ul>
+                <li>✅ <b>60,000 Legitimate Websites</b></li>
+                <li>⚠️ <b>60,000 Phishing Websites</b></li>
+            </ul>
+
+            <p>To train the model effectively, we extracted <b>18 unique features</b> from these URLs:</p>
+
+            <ul>
+                <li>🌍 <b>Domain</b> – Extracts the domain name of the URL.</li>
+                <li>📌 <b>Have_IP</b> – Checks if an IP address is used instead of a domain.</li>
+                <li>📧 <b>Have_At</b> – Detects the use of '@' in the URL.</li>
+                <li>📏 <b>URL_Length</b> – Measures the total length of the URL.</li>
+                <li>🧩 <b>URL_Depth</b> – Calculates the number of subdirectories in the URL.</li>
+                <li>🔁 <b>Redirection</b> – Identifies if the URL has multiple redirections.</li>
+                <li>🔒 <b>https_Domain</b> – Checks if HTTPS is present in the domain name.</li>
+                <li>🔗 <b>TinyURL</b> – Detects shortened URLs using services like Bit.ly.</li>
+                <li>➖ <b>Prefix/Suffix</b> – Identifies '-' usage in domain names.</li>
+                <li>📡 <b>DNS_Record</b> – Checks if the domain has a valid DNS record.</li>
+                <li>📈 <b>Web_Traffic</b> – Analyzes the website's traffic rank.</li>
+                <li>📅 <b>Domain_Age</b> – Extracts the age of the domain (old vs. new).</li>
+                <li>📆 <b>Domain_End</b> – Checks domain expiration status.</li>
+                <li>🖼 <b>iFrame</b> – Identifies hidden <i>iframe</i> elements on the webpage.</li>
+                <li>🖱 <b>Mouse_Over</b> – Detects changes in links when hovered over.</li>
+                <li>🖱 <b>Right_Click</b> – Checks if right-click is disabled.</li>
+                <li>🔄 <b>Web_Forwards</b> – Measures the number of webpage forwards.</li>
+                <li>🏷 <b>Label</b> – Classifies the URL as phishing (1) or legitimate (0).</li>
+            </ul>
+
+            <p>
+                📂 <b>About Dataset</b><br>
+            <p>
+                For this project, we need a bunch of urls of type legitimate (0) and phishing (1).
+                The collection of phishing urls is rather easy because of the opensource service called PhishTank. This
+                service provide a set of phishing URLs in multiple formats like csv, json etc. that gets updated hourly.
+                🔗 <a href="https://www.phishtank.com/developer_info.php" target="_blank">Phishing Websites Dataset</a>
+            </p>
+            <p>
+                For the legitimate URLs, We can use Kaggle or any other sites since we can get easisly, I used multiple
+                sources and took URLs Randomly to increase variation in inputs.🔗 <a
+                    href="https://www.kaggle.com/datasets/harisudhan411/phishing-and-legitimate-urls"
+                    target="_blank">Legitimate Websites Dataset</a> <br>
+            </p>
+
+
+            </p>
+        </div>
+
+
+
+        <div class="step">
+            <p class="step-title">📌 Step 3: Testing with Multiple Models</p>
+            <p>
+                We experimented with <b>6 different machine learning models</b> to identify the most effective approach
+                for phishing detection. Each model was evaluated based on training accuracy and test accuracy.
+            </p>
+
+            <h3>🔍 Models Used:</h3>
+            <ul>
+                <li>📊 <b>Logistic Regression</b> – Simple yet effective baseline model.</li>
+                <li>🌳 <b>Decision Tree</b> – Captures complex patterns in data.</li>
+                <li>🌲 <b>Random Forest</b> – Ensemble learning approach to improve accuracy.</li>
+                <li>📈 <b>Support Vector Machine (SVM)</b> – Effective in high-dimensional spaces.</li>
+                <li>🧠 <b>Neural Network</b> – Deep learning-based approach for feature learning.</li>
+                <li>🔢 <b>Gradient Boosting</b> – Optimized boosting algorithm for better predictions.</li>
+            </ul>
+
+            <table class="model-performance">
+                <thead>
+                    <tr>
+                        <th>ML Model</th>
+                        <th>Train Accuracy</th>
+                        <th>Test Accuracy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Multilayer Perceptron</td>
+                        <td>0.864</td>
+                        <td>0.864</td>
+                    </tr>
+                    <tr>
+                        <td>XGBoost</td>
+                        <td>0.864</td>
+                        <td>0.864</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Tree</td>
+                        <td>0.861</td>
+                        <td>0.861</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.845</td>
+                        <td>0.847</td>
+                    </tr>
+                    <tr>
+                        <td>SVM</td>
+                        <td>0.763</td>
+                        <td>0.766</td>
+                    </tr>
+                    <tr>
+                        <td>AutoEncoder</td>
+                        <td>0.071</td>
+                        <td>0.071</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="step">
+            <p class="step-title">📌 Step 4: Improving Model Accuracy</p>
+            <p>
+                After extensive testing, we implemented the <strong>Model Enhancement with TDLHBA hyperparameters and visualization</strong> technique, 
+                which significantly improves the model’s accuracy. This approach fine-tunes hyperparameters using TDLHBA while leveraging visualization techniques 
+                to enhance detection rates and model interpretability.
+            </p>
+        </div>
+        
+
+        <div class="step">
+            <p class="step-title">✅ Step 5: Model is Ready! Test It Now</p>
+            <p>
+                Our phishing detection model is now trained and deployed! Click the button below to test a website and
+                check if it's safe.
+            </p>
+            <center>
+                <a href="{{ url_for('index') }}" class="btn">Check Site</a>
+            </center>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 Phishing URL Predictor | Built using Flask & TensorFlow
+    </div>
+
+</body>
+
+</html>
