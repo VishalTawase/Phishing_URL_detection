@@ -7,3 +7,4 @@ gunicorn
 numpy
 urllib3
 beautifulsoup4
+playwright
